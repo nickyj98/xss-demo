@@ -21,6 +21,12 @@ pipeline {
         dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'Default'
       }
     }
+	
+	stage('pyflask init') {
+			steps {
+				sh 'flask run'
+			}	
+		}
   }  
   post {
     success {
