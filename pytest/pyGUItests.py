@@ -11,7 +11,6 @@ import requests
 import random, string
 import pytest
 import os 
-import sys
 
 
 @pytest.fixture()
@@ -38,9 +37,10 @@ def test_xss_found(test_automation_setup):
 		WebDriverWait(driver, 5).until(expected_conditions.alert_is_present())
 
 		alert = driver.switch_to.alert.accept()
+		print("xss found")
 		assert True
 	
-	except TimeoutException:
+	except TimeoutException as ex:
+		print("xss not found")
 		assert False
-		sys.exit(0)
 	driver.close()
