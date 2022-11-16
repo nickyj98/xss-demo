@@ -11,6 +11,7 @@ import requests
 import random, string
 import pytest
 import os 
+import sys
 
 
 @pytest.fixture()
@@ -41,4 +42,5 @@ def test_xss_found(test_automation_setup):
 	
 	except TimeoutException:
 		assert False
+		sys.exit(0)
 	driver.close()
