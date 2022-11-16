@@ -35,8 +35,7 @@ def test_xss_found(test_automation_setup):
 	try:
 		WebDriverWait(driver, 5).until(expected_conditions.alert_is_present())
 
-		alert = driver.switch_to.alert
-		alert.dismiss()
+		alert = driver.switch_to.alert.accept()
 		assert True
 	
 	except TimeoutException:
