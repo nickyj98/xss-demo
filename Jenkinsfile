@@ -40,7 +40,7 @@ pipeline {
 	stage('run pytests') {
             steps {
             	sleep time: 10
-				sh 'pytest ./pytest/pytest.py --html=./pytest/report.html --self-contained-html'
+				sh 'pytest ./pytest/pyGUItests.py --html=./pytest/report.html --self-contained-html'
         }
     }
   }  
