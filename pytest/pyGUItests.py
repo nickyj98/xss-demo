@@ -32,13 +32,13 @@ def test_xss_found(test_automation_setup):
 	driver.get("http://172.25.0.1:5000/")
 	driver.find_element("name","comment").send_keys(xss_string)
 	driver.find_element("id","submit").click()
-        try:
-        	WebDriverWait(driver, 5).until(expected_conditions.alert_is_present())
+	try:
+		WebDriverWait(driver, 5).until(expected_conditions.alert_is_present())
 
-        	alert = driver.switch_to.alert
-        	alert.accept()
-        	assert foundAlert == True
-        
-    	except TimeoutException:
-       		assert foundAlert == False
-    	driver.close()
+		alert = driver.switch_to.alert
+		alert.accept()
+		assert foundAlert == True
+	
+	except TimeoutException:
+		assert foundAlert == False
+	driver.close()
