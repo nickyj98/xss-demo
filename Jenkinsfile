@@ -37,6 +37,12 @@ pipeline {
 			sh 'JENKINS_NODE_COOKIE=dontKillMe nohup gunicorn -b 0.0.0.0:5000 wsgi:app &'
 		}	
 	}
+	stage('run pytests') {
+            steps {
+            	sleep time: 10
+				sh 'pytest ./pytest/pytests.py --html=./pytest/report.html --self-contained-html'
+        }
+    }
   }  
   post {
     success {

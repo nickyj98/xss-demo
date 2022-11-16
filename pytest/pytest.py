@@ -26,7 +26,19 @@ def test_automation_setup():
 	return driver
 
 
-def test_login_success(test_automation_setup):
+def test_xss_found(test_automation_setup):
+    xss_string = "<script>alert('javascript was executed')</script>"
 	driver = test_automation_setup
 	driver.get("http://172.25.0.1:5000/")
-    
+    driver.find_element("name","comment").send_keys(xss_string)
+    driver.find_element("id","submit").click()
+    try:
+        WebDriverWait(driver, 5).until(expected_conditions.alert_is_present())
+
+        alert = driver.switch_to.alert
+        alert.accept()
+        assert foundAlert == True
+        
+    except TimeoutException:
+        assert foundAlert == False
+    driver.close()
