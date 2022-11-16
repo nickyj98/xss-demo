@@ -26,7 +26,7 @@ pipeline {
 	
 	stage('pyflask run') {
 		steps {
-			sh 'JENKINS_NODE_COOKIE=dontKillMe nohup gunicorn -b 0.0.0.0:5000 wsgi:app&'
+			sh 'JENKINS_NODE_COOKIE=dontKillMe nohup gunicorn -b 0.0.0.0:5000 wsgi:app &'
 		}	
 	}
   }  
