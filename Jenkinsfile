@@ -11,7 +11,7 @@ pipeline {
 			steps {
 				sh 'apt-get install python3 -y'
 				sh 'apt-get -y install python3-pip'
-				sh 'pip3 install flask'
+				sh 'pip3 install gunicorn flask'
 			}
 		}
 
