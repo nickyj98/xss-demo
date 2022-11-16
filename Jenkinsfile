@@ -6,6 +6,15 @@ pipeline {
         git branch: 'master', url: 'https://github.com/nickyj98/xss-demo.git'
       }
     }
+	
+	stage('pyflask init') {
+			steps {
+				sh 'apt-get install python3 -y'
+				sh 'apt-get -y install python3-pip'
+				sh 'pip3 install flask'
+			}
+		}
+
 
     stage('OWASP DependencyCheck') {
       steps {
