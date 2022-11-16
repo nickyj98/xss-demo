@@ -22,11 +22,11 @@ pipeline {
       }
     }
 	
-	stage('pyflask init') {
-			steps {
-				sh 'flask run'
-			}	
-		}
+	stage('pyflask run') {
+		steps {
+			sh 'flask run'
+		}	
+	}
   }  
   post {
     success {
