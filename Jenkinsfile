@@ -14,7 +14,7 @@ pipeline {
 				sh 'pip3 install gunicorn flask'
 				sh 'apt-get install lsof -y '
 				sh' if lsof -Pi :5000 -sTCP:LISTEN ; then (kill -9 $(lsof -t -i:5000)) ; else echo \"not running\" ; fi'
-				sh' rm /var/jenkins_home/workspace/TestDeploy/database.db '
+				sh' rm /var/jenkins_home/workspace/TestDeploy/database.db &'
 			}
 		}
 
