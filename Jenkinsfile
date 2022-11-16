@@ -24,7 +24,7 @@ pipeline {
 	
 	stage('pyflask run') {
 		steps {
-			sh 'flask run'
+			sh 'gunicorn -b 0.0.0.0:5000 wsgi:app'
 		}	
 	}
   }  
